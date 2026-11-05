@@ -238,6 +238,143 @@
     });
   }
 
+  /* Curved testimonial rail — smooth infinite drift */
+  const curveRoot = document.querySelector("[data-testimonial-curve]");
+  if (curveRoot) {
+    const viewport = curveRoot.querySelector("[data-curve-viewport]");
+    const track = curveRoot.querySelector("[data-curve-track]");
+    if (viewport && track) {
+      const originals = [...track.querySelectorAll("[data-curve-card]")];
+      /* Duplicate for seamless loop */
+      originals.forEach((card) => track.appendChild(card.cloneNode(true)));
+
+      let offset = 0;
+      let velocity = reduceMotion ? 0 : 0.05;
+      let autoSpeed = 0.05;
+      let paused = false;
+      let dragging = false;
+      let lastX = 0;
+      let lastT = 0;
+      let loopWidth = 0;
+      let raf = 0;
+      let cards = [];
+
+      const measure = () => {
+        cards = [...track.querySelectorAll("[data-curve-card]")];
+        const half = cards.length / 2;
+        if (half < 1) return;
+        const first = cards[0];
+        const mid = cards[half];
+        loopWidth = mid.offsetLeft - first.offsetLeft;
+        if (offset > 0) offset = -(((-offset) % loopWidth + loopWidth) % loopWidth);
+      };
+
+      const paint = () => {
+        const center = viewport.clientWidth / 2;
+        let best = null;
+        let bestDist = Infinity;
+
+        cards.forEach((card) => {
+          const rect = card.getBoundingClientRect();
+          const viewRect = viewport.getBoundingClientRect();
+          const cardCenter = rect.left + rect.width / 2 - viewRect.left;
+          const norm = (cardCenter - center) / Math.max(220, center);
+          const clamped = Math.max(-1.35, Math.min(1.35, norm));
+          const rotateY = clamped * -42;
+          const translateZ = (1 - Math.min(1, Math.abs(clamped))) * 56 - 18;
+          const scale = 0.86 + (1 - Math.min(1, Math.abs(clamped))) * 0.16;
+          const opacity = 0.42 + (1 - Math.min(1, Math.abs(clamped))) * 0.58;
+          card.style.transform = `translate3d(0,0,${translateZ.toFixed(2)}px) rotateY(${rotateY.toFixed(2)}deg) scale(${scale.toFixed(3)})`;
+          card.style.opacity = opacity.toFixed(3);
+          const dist = Math.abs(clamped);
+          if (dist < bestDist) {
+            bestDist = dist;
+            best = card;
+          }
+        });
+
+        cards.forEach((card) => card.classList.toggle("is-focus", card === best));
+        track.style.transform = `translate3d(${offset.toFixed(2)}px,0,0)`;
+      };
+
+      const tick = (now) => {
+        raf = requestAnimationFrame(tick);
+        if (!loopWidth) measure();
+        if (!loopWidth) return;
+
+        if (!dragging && !paused && !reduceMotion) {
+          const dt = lastT ? Math.min(34, now - lastT) : 16;
+          offset -= autoSpeed * dt;
+          velocity = autoSpeed;
+        } else if (!dragging && Math.abs(velocity) > 0.002) {
+          offset -= velocity * Math.min(34, now - lastT || 16);
+          velocity *= 0.94;
+        }
+
+        if (loopWidth) {
+          while (offset <= -loopWidth) offset += loopWidth;
+          while (offset > 0) offset -= loopWidth;
+        }
+
+        lastT = now;
+        paint();
+      };
+
+      measure();
+      paint();
+      if (!reduceMotion) raf = requestAnimationFrame(tick);
+      else {
+        offset = 0;
+        paint();
+      }
+
+      viewport.addEventListener("pointerenter", () => {
+        paused = true;
+      });
+      viewport.addEventListener("pointerleave", () => {
+        if (!dragging) paused = false;
+      });
+
+      viewport.addEventListener("pointerdown", (e) => {
+        if (e.button !== 0) return;
+        dragging = true;
+        paused = true;
+        lastX = e.clientX;
+        velocity = 0;
+        viewport.classList.add("is-dragging");
+        viewport.setPointerCapture?.(e.pointerId);
+      });
+
+      viewport.addEventListener("pointermove", (e) => {
+        if (!dragging) return;
+        const dx = e.clientX - lastX;
+        lastX = e.clientX;
+        offset += dx;
+        velocity = -dx * 0.08;
+      });
+
+      const endDrag = (e) => {
+        if (!dragging) return;
+        dragging = false;
+        viewport.classList.remove("is-dragging");
+        if (viewport.hasPointerCapture?.(e.pointerId)) {
+          try {
+            viewport.releasePointerCapture(e.pointerId);
+          } catch (_) {}
+        }
+        paused = false;
+      };
+
+      viewport.addEventListener("pointerup", endDrag);
+      viewport.addEventListener("pointercancel", endDrag);
+
+      window.addEventListener("resize", () => {
+        measure();
+        paint();
+      });
+    }
+  }
+
   /* FAQ accordion */
   const accordion = document.querySelector("[data-accordion]");
   if (accordion) {
