@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profit Vision — Educación financiera y mentoría personalizada</title>
+  <meta name="description" content="Aprende a manejar tus finanzas, define tus objetivos y conecta con mentores que te ayuden a avanzar. Educación financiera accesible, a tu ritmo." />
+  <meta property="og:title" content="Profit Vision — Entiende tu dinero. Construye tu futuro." />
+  <meta property="og:description" content="Plataforma de educación financiera y mentoría personalizada. Sin jerga innecesaria. Sin barreras de entrada." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_DO" />
+  <meta name="theme-color" content="#173C30" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>document.documentElement.classList.add("js-ready");</script>
+</head>
+<body>
+  <!--
+    THESIS: Financial clarity through calm mentorship — refuse the neon-fintech / coin-stack template.
+    OWN-WORLD: Cream + sage + forest + lime accents; Plus Jakarta Sans (DocuGreen-like); soft pills; Profit Vision logo.
+    STORY: Visitor understands money education is accessible, sees the path, and registers as learner or mentor.
+    FIRST VIEWPORT: Sticky nav with logo · bold sans headline · custom learning interface right · dual CTAs with arrow chips.
+    FORM: DocuGreen type/chrome + Profit Vision brand; content structure preserved.
+    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+  -->
+
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header" id="nav" data-header>
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Profit Vision — Inicio">
+        <img class="brand-logo" src="assets/logo.png" alt="Profit Vision" width="200" height="42" />
+      </a>
+
+      <nav class="nav-desktop" aria-label="Principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#mentorias">Mentorías</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#faq">Preguntas frecuentes</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm" href="registro-usuario.html">Comenzar ahora <span class="btn-arrow" aria-hidden="true">→</span></a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-mobile" data-nav-toggle>
+          <span class="sr-only">Abrir menú</span>
+          <span class="nav-toggle-lines" aria-hidden="true">
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="nav-backdrop" data-nav-backdrop hidden></div>
+    <div class="nav-mobile" id="nav-mobile" data-nav-mobile aria-hidden="true">
+      <nav aria-label="Móvil">
+        <a href="#inicio" style="--i: 0">Inicio</a>
+        <a href="#como-funciona" style="--i: 1">Cómo funciona</a>
+        <a href="#mentorias" style="--i: 2">Mentorías</a>
+        <a href="#beneficios" style="--i: 3">Beneficios</a>
+        <a href="#faq" style="--i: 4">Preguntas frecuentes</a>
+        <a class="btn btn-primary" href="registro-usuario.html" style="--i: 5">Comenzar ahora <span class="btn-arrow" aria-hidden="true">→</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- HERO -->
+    <section class="hero section" id="inicio">
+      <div class="container hero-centered">
+        <div class="hero-copy hero-rise" style="--d: 80ms">
+          <p class="eyebrow">Educación financiera, a tu ritmo</p>
+          <h1 class="hero-title">
+            Entiende tu dinero.<br />
+            <span class="hero-title-line">Construye <img class="hero-inline-sprout" src="assets/sprout.png" alt="" width="48" height="36" /> <span class="text-outline">tu futuro.</span></span>
+          </h1>
+          <p class="hero-lead">
+            Aprende a manejar tus finanzas, descubre nuevas oportunidades y conecta con mentores que te ayuden a avanzar hacia tus objetivos.
+          </p>
+          <div class="hero-ctas">
+            <a class="btn btn-ghost" href="#como-funciona">Descubre cómo funciona <span class="btn-arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn-primary" href="registro-usuario.html">Comenzar mi camino <span class="btn-arrow" aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <div class="hero-mosaic" aria-label="Vista previa de la experiencia">
+          <article class="mosaic-card mosaic-card--tall hero-anim" style="--d: 520ms">
+            <div class="mosaic-card-body">
+              <div class="ui-card-top">
+                <span class="ui-label">Tu camino</span>
+                <span class="ui-pill">Semana 3</span>
+              </div>
+              <h3 class="ui-title">Fondo de emergencia</h3>
+              <p class="ui-meta">Meta · RD$60,000</p>
+              <div class="progress-track" role="presentation">
+                <div class="progress-fill" style="--p: 62%"></div>
+              </div>
+              <div class="ui-row">
+                <span>RD$37,200</span>
+                <span class="muted">62%</span>
+              </div>
+            </div>
+            <span class="mosaic-tag">Ahorro</span>
+          </article>
+
+          <article class="mosaic-card mosaic-card--mentor hero-anim" style="--d: 640ms">
+            <div class="mosaic-card-body">
+              <div class="ui-card-top">
+                <span class="ui-label">Próxima sesión</span>
+                <span class="ui-dot" aria-hidden="true"></span>
+              </div>
+              <p class="ui-session-title">Hábitos de ahorro</p>
+              <p class="ui-meta">Videollamada · 45 min</p>
+              <div class="ui-chips">
+                <span class="chip">Finanzas personales</span>
+                <span class="chip chip--soft">Principiante</span>
+                <span class="chip chip--soft">Mentoría</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="mosaic-card mosaic-card--wide hero-anim" style="--d: 760ms">
+            <div class="mosaic-card-body mosaic-insight">
+              <div class="mosaic-insight-top">
+                <span class="mosaic-insight-mark" aria-hidden="true">“</span>
+                <span class="chip chip--soft">Claridad</span>
+              </div>
+              <p class="mosaic-insight-quote">Una meta clara hoy vale más que un plan perfecto mañana.</p>
+              <div class="mosaic-insight-foot">
+                <p class="mosaic-insight-note">Ejemplo ilustrativo · no atribuido a un mentor real</p>
+                <div class="mosaic-stat">
+                  <span class="mosaic-stat-num">18</span>
+                  <span class="mosaic-stat-label">temas</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY / Learning rail -->
+    <section class="section section-why" id="beneficios">
+      <div class="container">
+        <div class="rail-intro reveal">
+          <p class="eyebrow">Tu camino · Temas en el riel</p>
+          <h2>Tomar mejores decisiones comienza por entender tus finanzas.</h2>
+          <p class="lead">
+            Desliza por el riel, abre un tema y explora lo esencial. No importa si estás empezando a ahorrar o si quieres aprender a invertir.
+          </p>
+        </div>
+
+        <div class="finance-rail reveal" data-finance-rail>
+          <div class="finance-rail-bar" aria-hidden="true"></div>
+          <div class="finance-rail-track" data-rail-track>
+            <button type="button" class="rail-card" data-rail-card data-topic="presupuesto" style="--i:0">
+              <span class="rail-hook" aria-hidden="true"></span>
+              <span class="rail-card-face">
+                <span class="rail-card-icon" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 15h3"/></svg>
+                </span>
+                <strong>Presupuesto</strong>
+                <span class="rail-tag">Hábitos</span>
+              </span>
+            </button>
+            <button type="button" class="rail-card" data-rail-card data-topic="ahorro" style="--i:1">
+              <span class="rail-hook" aria-hidden="true"></span>
+              <span class="rail-card-face">
+                <span class="rail-card-icon" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 8a7 7 0 1 0-12 5"/><path d="M13 21H5"/><path d="M16 8h.01"/><path d="M19 12v3"/><path d="M19 18h.01"/></svg>
+                </span>
+                <strong>Ahorro</strong>
+                <span class="rail-tag">Constancia</span>
+              </span>
+            </button>
+            <button type="button" class="rail-card" data-rail-card data-topic="emergencia" style="--i:2">
+              <span class="rail-hook" aria-hidden="true"></span>
+              <span class="rail-card-face">
+                <span class="rail-card-icon" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </span>
+                <strong>Emergencia</strong>
+                <span class="rail-tag">Respaldo</span>
+              </span>
+            </button>
+            <button type="button" class="rail-card" data-rail-card data-topic="deudas" style="--i:3">
+              <span class="rail-hook" aria-hidden="true"></span>
+              <span class="rail-card-face">
+                <span class="rail-card-icon" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </span>
+                <strong>Deudas</strong>
+                <span class="rail-tag">Orden</span>
+              </span>
+            </button>
+            <button type="button" class="rail-card is-active" data-rail-card data-topic="invertir" style="--i:4">
+              <span class="rail-hook" aria-hidden="true"></span>
+              <span class="rail-card-face">
+                <span class="rail-card-icon" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                </span>
+                <strong>Invertir</strong>
+                <span class="rail-tag">Crecimiento</span>
+              </span>
+            </button>
+            <button type="button" class="rail-card" data-rail-card data-topic="metas" style="--i:5">
+              <span class="rail-hook" aria-hidden="true"></span>
+              <span class="rail-card-face">
+                <span class="rail-card-icon" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                </span>
+                <strong>Metas</strong>
+                <span class="rail-tag">Claridad</span>
+              </span>
+            </button>
+            <button type="button" class="rail-card" data-rail-card data-topic="mentoria" style="--i:6">
+              <span class="rail-hook" aria-hidden="true"></span>
+              <span class="rail-card-face">
+                <span class="rail-card-icon" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </span>
+                <strong>Mentoría</strong>
+                <span class="rail-tag">Guía</span>
+              </span>
+            </button>
+          </div>
+          <p class="rail-hint">Desliza el riel · toca una tarjeta para ver el detalle</p>
+        </div>
+
+        <aside class="rail-detail reveal" data-rail-detail aria-live="polite">
+          <p class="ui-label" data-rail-kicker>Tema activo</p>
+          <h3 data-rail-title>Invertir con bases</h3>
+          <p data-rail-copy>Conoce los fundamentos, las oportunidades y los riesgos antes de tomar decisiones. La mentoría te acompaña a tu ritmo.</p>
+          <a class="btn btn-primary btn-sm" href="registro-usuario.html">Explorar este tema <span class="btn-arrow" aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section section-how" id="como-funciona">
+      <div class="container">
+        <div class="section-intro reveal">
+          <h2>Un camino financiero que empieza contigo.</h2>
+          <p class="lead">
+            Tres pasos sencillos para entender tu situación, definir lo que buscas y acercarte a una mentoría alineada con tus metas.
+          </p>
+        </div>
+
+        <div class="steps-layout">
+          <ol class="steps">
+            <li class="step reveal" data-step="1">
+              <button type="button" class="step-trigger is-active" data-step-btn="1" aria-pressed="true">
+                <span class="step-index">01</span>
+                <span class="step-body">
+                  <strong>Cuéntanos sobre ti</strong>
+                  <span>Completas un registro breve con tu información básica, tu situación financiera y tus objetivos.</span>
+                </span>
+              </button>
+            </li>
+            <li class="step reveal" data-step="2" style="--d: 80ms">
+              <button type="button" class="step-trigger" data-step-btn="2" aria-pressed="false">
+                <span class="step-index">02</span>
+                <span class="step-body">
+                  <strong>Descubre tu perfil</strong>
+                  <span>Indicas tu experiencia, áreas de interés y preferencias de aprendizaje.</span>
+                </span>
+              </button>
+            </li>
+            <li class="step reveal" data-step="3" style="--d: 160ms">
+              <button type="button" class="step-trigger" data-step-btn="3" aria-pressed="false">
+                <span class="step-index">03</span>
+                <span class="step-body">
+                  <strong>Conecta con un mentor</strong>
+                  <span>Usamos la información que compartes para ayudarte a identificar un mentor acorde a tus metas y preferencias.</span>
+                </span>
+              </button>
+            </li>
+          </ol>
+
+          <div class="step-preview reveal" style="--d: 120ms" data-step-preview>
+            <div class="preview-panel is-active" data-preview="1">
+              <p class="ui-label">Paso 01 · Registro</p>
+              <div class="preview-form">
+                <div class="preview-field"><span>Nombre</span><strong>Ana Rodríguez</strong></div>
+                <div class="preview-field"><span>Ciudad</span><strong>Santo Domingo</strong></div>
+                <div class="preview-field"><span>Objetivo principal</span><strong>Crear un fondo de emergencia</strong></div>
+              </div>
+              <p class="preview-note">Vista ilustrativa del formulario de registro.</p>
+            </div>
+            <div class="preview-panel" data-preview="2" hidden>
+              <p class="ui-label">Paso 02 · Perfil</p>
+              <div class="preview-tags">
+                <span class="chip">Principiante</span>
+                <span class="chip">Ahorro</span>
+                <span class="chip">Finanzas personales</span>
+                <span class="chip chip--soft">Español</span>
+              </div>
+              <p class="preview-note">Seleccionas experiencia, intereses y preferencias.</p>
+            </div>
+            <div class="preview-panel" data-preview="3" hidden>
+              <p class="ui-label">Paso 03 · Mentoría</p>
+              <div class="preview-match">
+                <div class="preview-match-row"><span>Categoría</span><strong>Finanzas personales</strong></div>
+                <div class="preview-match-row"><span>Modalidad</span><strong>Videollamada</strong></div>
+                <div class="preview-match-row"><span>Frecuencia</span><strong>Quincenal</strong></div>
+              </div>
+              <p class="preview-note">La coincidencia se basa en tus preferencias, no en una inteligencia artificial anunciada.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="section section-categories" id="mentorias">
+      <div class="container">
+        <div class="section-intro reveal">
+          <h2>Aprende sobre lo que realmente te importa.</h2>
+          <p class="lead">
+            Explora áreas de educación financiera y mentoría. Algunas categorías pueden tener restricciones de edad; te las mostramos con claridad durante el registro.
+          </p>
+        </div>
+
+        <ul class="category-grid">
+          <li class="category-item reveal">
+            <span class="category-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </span>
+            <h3>Finanzas personales</h3>
+            <p>Presupuesto, hábitos, ahorro y decisiones cotidianas con más claridad.</p>
+          </li>
+          <li class="category-item reveal" style="--d: 60ms">
+            <span class="category-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+            </span>
+            <h3>Mercado de valores</h3>
+            <p>Fundamentos de acciones, índices y lectura básica del mercado.</p>
+          </li>
+          <li class="category-item reveal" style="--d: 120ms">
+            <span class="category-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </span>
+            <div class="category-head">
+              <h3>Trading</h3>
+              <span class="badge">Edad</span>
+            </div>
+            <p>Conceptos, disciplina y riesgos del trading activo. Puede requerir mayoría de edad.</p>
+          </li>
+          <li class="category-item reveal" style="--d: 180ms">
+            <span class="category-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg>
+            </span>
+            <h3>Bienes raíces</h3>
+            <p>Bases para entender propiedad, financiamiento y planificación a largo plazo.</p>
+          </li>
+          <li class="category-item reveal" style="--d: 240ms">
+            <span class="category-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
+            <h3>Emprendimiento y negocios</h3>
+            <p>Planificación financiera para quienes construyen o hacen crecer un negocio.</p>
+          </li>
+          <li class="category-item reveal" style="--d: 300ms">
+            <span class="category-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+            </span>
+            <div class="category-head">
+              <h3>Criptoactivos</h3>
+              <span class="badge">Edad</span>
+            </div>
+            <p>Introducción a blockchain y activos digitales, con énfasis en riesgos. Puede requerir mayoría de edad.</p>
+          </li>
+          <li class="category-item category-item--wide reveal" style="--d: 360ms">
+            <span class="category-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </span>
+            <h3>Planificación para el retiro</h3>
+            <p>Horizontes largos, hábitos constantes y decisiones pensadas para el futuro.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PERSONALIZED MENTORSHIP -->
+    <section class="section section-personal">
+      <div class="container personal-grid">
+        <div class="personal-copy reveal">
+          <h2>No todos tenemos las mismas metas. Tu aprendizaje tampoco debería ser igual.</h2>
+          <p class="lead">
+            La mentoría se puede adaptar a tu conocimiento actual, tus objetivos, el área que te interesa, tu horizonte de tiempo, el formato de comunicación que prefieres, tu disponibilidad y la frecuencia de sesiones que deseas.
+          </p>
+          <ul class="quiet-list">
+            <li>Nivel de conocimiento financiero</li>
+            <li>Objetivos y horizonte temporal</li>
+            <li>Área de interés y modalidad</li>
+            <li>Disponibilidad y frecuencia</li>
+          </ul>
+        </div>
+
+        <aside class="profile-card reveal" style="--d: 100ms" aria-label="Vista ilustrativa de preferencias de mentoría">
+          <p class="ui-label">Vista ilustrativa · no es un perfil real</p>
+          <h3 class="profile-title">Preferencias de mentoría</h3>
+          <dl class="profile-list">
+            <div>
+              <dt>Tu experiencia</dt>
+              <dd>Principiante</dd>
+            </div>
+            <div>
+              <dt>Tu objetivo</dt>
+              <dd>Comenzar a invertir</dd>
+            </div>
+            <div>
+              <dt>Modalidad preferida</dt>
+              <dd>Videollamada</dd>
+            </div>
+            <div>
+              <dt>Frecuencia</dt>
+              <dd>Quincenal</dd>
+            </div>
+            <div>
+              <dt>Categoría</dt>
+              <dd>Mercado de valores</dd>
+            </div>
+            <div>
+              <dt>Idioma</dt>
+              <dd>Español</dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <!-- MENTOR INSIGHTS -->
+    <section class="section section-insights" id="insights">
+      <div class="container">
+        <div class="section-intro reveal">
+          <h2>Aprender de la experiencia también es avanzar.</h2>
+          <p class="lead">
+            Estos son ejemplos educativos conectados con la idea de mentoría. Cuando existan hallazgos reales de mentores, imágenes o videos, se incorporarán en este espacio.
+          </p>
+        </div>
+
+        <div class="insights-layout">
+          <article class="insight-feature reveal">
+            <p class="insight-kicker">Espacio reservado</p>
+            <h3>Hallazgos de mentores</h3>
+            <p>
+              Aquí podrás ver reflexiones, imágenes o videos compartidos por mentores de la plataforma. Por ahora, este bloque está preparado para recibir ese contenido cuando esté disponible.
+            </p>
+            <div class="insight-media-slot" role="img" aria-label="Espacio para imagen o video de mentor">
+              <span>Imagen o video próximamente</span>
+            </div>
+            <p class="insight-note">Contenido pendiente de inserción · no es un testimonio verificado</p>
+          </article>
+
+          <div class="insight-stack">
+            <article class="insight-card reveal" style="--d: 60ms">
+              <span class="insight-tag">Insight 01 · ejemplo educativo</span>
+              <p>“Antes de pensar en invertir, es importante entender cuánto ganas, cuánto gastas y cuánto puedes ahorrar.”</p>
+            </article>
+            <article class="insight-card reveal" style="--d: 120ms">
+              <span class="insight-tag">Insight 02 · ejemplo educativo</span>
+              <p>“Una buena meta financiera no empieza con una cantidad de dinero, sino con un plan que puedas mantener.”</p>
+            </article>
+            <article class="insight-card reveal" style="--d: 180ms">
+              <span class="insight-tag">Insight 03 · ejemplo educativo</span>
+              <p>“Conocer los riesgos es tan importante como conocer las oportunidades.”</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REGISTRATION PREVIEW -->
+    <section class="section section-register" id="registro">
+      <div class="container register-grid">
+        <div class="register-copy reveal">
+          <h2>Tu próximo paso comienza aquí.</h2>
+          <p class="lead">
+            Un cuestionario breve nos ayuda a entender tu situación y tus preferencias. Hay dos caminos claros: registro de usuarios y registro de mentores.
+          </p>
+          <div class="register-links">
+            <a class="btn btn-primary" href="registro-usuario.html">Registro de usuarios <span class="btn-arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost" href="registro-mentor.html">Registro de mentores <span class="btn-arrow" aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <div class="register-preview reveal" style="--d: 100ms" aria-hidden="false">
+          <div class="onboard-card">
+            <div class="onboard-progress" role="presentation">
+              <span class="onboard-dot is-done"></span>
+              <span class="onboard-dot is-done"></span>
+              <span class="onboard-dot is-active"></span>
+              <span class="onboard-dot"></span>
+              <span class="onboard-dot"></span>
+              <span class="onboard-dot"></span>
+            </div>
+            <p class="ui-label">Paso 3 de 6 · Experiencia</p>
+            <h3>¿Cuál describe mejor tu experiencia?</h3>
+            <ul class="onboard-options">
+              <li class="is-selected">Estoy comenzando a aprender sobre finanzas.</li>
+              <li>Sé administrar mis finanzas, pero nunca he invertido.</li>
+              <li>He realizado algunas inversiones.</li>
+            </ul>
+            <p class="preview-note">Vista previa del flujo de registro · prototipo universitario</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-faq" id="faq">
+      <div class="container narrow">
+        <div class="section-intro reveal">
+          <h2>Preguntas frecuentes</h2>
+          <p class="lead">Respuestas claras sobre cómo funciona la plataforma hoy.</p>
+        </div>
+
+        <div class="faq-list" data-accordion>
+          <div class="faq-item reveal">
+            <h3>
+              <button type="button" class="faq-trigger" aria-expanded="false" id="faq-btn-1" aria-controls="faq-panel-1">
+                ¿Necesito experiencia para comenzar?
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="faq-panel-1" role="region" aria-labelledby="faq-btn-1" hidden>
+              <p>No. La plataforma está pensada para personas con distintos niveles de conocimiento, incluyendo quienes recién empiezan.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal" style="--d: 40ms">
+            <h3>
+              <button type="button" class="faq-trigger" aria-expanded="false" id="faq-btn-2" aria-controls="faq-panel-2">
+                ¿Puedo registrarme si todavía no invierto?
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="faq-panel-2" role="region" aria-labelledby="faq-btn-2" hidden>
+              <p>Sí. Muchas personas se registran para organizar gastos, ahorrar, reducir deudas o aprender antes de invertir.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal" style="--d: 80ms">
+            <h3>
+              <button type="button" class="faq-trigger" aria-expanded="false" id="faq-btn-3" aria-controls="faq-panel-3">
+                ¿Cómo se elige un mentor?
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="faq-panel-3" role="region" aria-labelledby="faq-btn-3" hidden>
+              <p>Usamos la información que compartes en el registro —objetivos, experiencia, intereses y preferencias— para ayudarte a identificar un mentor adecuado. No prometemos coincidencias automáticas perfectas.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal" style="--d: 120ms">
+            <h3>
+              <button type="button" class="faq-trigger" aria-expanded="false" id="faq-btn-4" aria-controls="faq-panel-4">
+                ¿Qué temas puedo aprender?
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="faq-panel-4" role="region" aria-labelledby="faq-btn-4" hidden>
+              <p>Finanzas personales, mercado de valores, trading, bienes raíces, emprendimiento, criptoactivos y planificación para el retiro. Algunas categorías tienen restricciones de edad.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal" style="--d: 160ms">
+            <h3>
+              <button type="button" class="faq-trigger" aria-expanded="false" id="faq-btn-5" aria-controls="faq-panel-5">
+                ¿Qué información necesito compartir?
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="faq-panel-5" role="region" aria-labelledby="faq-btn-5" hidden>
+              <p>Datos de contacto, una descripción general de tu situación financiera, tu experiencia, tus metas y tus preferencias de mentoría. No pedimos documentos de identidad ni datos de cuentas bancarias en este prototipo.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal" style="--d: 200ms">
+            <h3>
+              <button type="button" class="faq-trigger" aria-expanded="false" id="faq-btn-6" aria-controls="faq-panel-6">
+                ¿Puedo participar si soy menor de edad?
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="faq-panel-6" role="region" aria-labelledby="faq-btn-6" hidden>
+              <p>Puedes explorar contenido educativo acorde a tu edad. Algunas categorías están restringidas. Si eres menor de 18 años, se solicitará el consentimiento de un tutor; un simple checkbox no sustituye una verificación legal completa.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section section-cta" id="cta-final">
+      <div class="container cta-panel reveal">
+        <h2>El mejor momento para entender tu dinero es ahora.</h2>
+        <p>Empieza a construir una relación más consciente con tus finanzas.</p>
+        <div class="cta-actions">
+          <a class="btn btn-light" href="registro-usuario.html">Comenzar ahora <span class="btn-arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn-outline-light" href="registro-mentor.html">Quiero ser mentor <span class="btn-arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#inicio" aria-label="Profit Vision">
+          <img class="brand-logo brand-logo--lg" src="assets/logo.png" alt="Profit Vision" width="220" height="48" />
+        </a>
+        <p>Educación financiera y mentoría personalizada para quienes quieren entender su dinero y avanzar con más claridad.</p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Explorar</h3>
+        <a href="#inicio">Inicio</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#mentorias">Mentorías</a>
+        <a href="#faq">Preguntas frecuentes</a>
+      </div>
+
+      <div class="footer-col">
+        <h3>Registro</h3>
+        <a href="registro-usuario.html">Registro de usuarios</a>
+        <a href="registro-mentor.html">Registro de mentores</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+
+      <div class="footer-col" id="contacto">
+        <h3>Legal</h3>
+        <a href="#privacidad">Política de privacidad <span class="placeholder-tag">borrador</span></a>
+        <a href="#terminos">Términos y condiciones <span class="placeholder-tag">borrador</span></a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p class="disclaimer">
+        El contenido de esta plataforma tiene fines educativos y no constituye una recomendación personalizada de inversión.
+      </p>
+      <p class="copyright">© <span data-year></span> Profit Vision. Prototipo universitario.</p>
+    </div>
+
+    <section class="legal-placeholders container" id="privacidad" hidden></section>
+    <dialog class="legal-dialog" id="dialog-privacidad" aria-labelledby="privacidad-title">
+      <div class="legal-dialog-inner">
+        <h2 id="privacidad-title">Política de privacidad</h2>
+        <p><strong>Borrador · pendiente de revisión legal.</strong> Este texto es un marcador de posición para el proyecto universitario. No constituye una política aprobada.</p>
+        <p>En una versión definitiva se describirá qué datos se recogen, con qué fin, cómo se almacenan y cuáles son tus derechos.</p>
+        <button type="button" class="btn btn-primary" data-close-dialog>Cerrar</button>
+      </div>
+    </dialog>
+    <dialog class="legal-dialog" id="dialog-terminos" aria-labelledby="terminos-title">
+      <div class="legal-dialog-inner">
+        <h2 id="terminos-title">Términos y condiciones</h2>
+        <p><strong>Borrador · pendiente de revisión legal.</strong> Este texto es un marcador de posición. No constituye términos vinculantes.</p>
+        <p>La plataforma tiene fines educativos. No garantiza resultados financieros ni asesoría de inversión regulada.</p>
+        <button type="button" class="btn btn-primary" data-close-dialog>Cerrar</button>
+      </div>
+    </dialog>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

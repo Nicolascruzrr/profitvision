@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro de mentores — Profit Vision</title>
+  <meta name="description" content="Solicita unirte como mentor en Profit Vision y comparte tu experiencia en educación financiera." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="form-page">
+  <a class="skip-link" href="#formulario">Saltar al formulario</a>
+
+  <header class="form-header">
+    <div class="container form-header-inner">
+      <a class="brand" href="index.html" aria-label="Profit Vision">
+        <img class="brand-logo" src="assets/logo.png" alt="Profit Vision" width="200" height="42" />
+      </a>
+      <a class="btn btn-ghost btn-sm" href="registro-usuario.html">Soy usuario <span class="btn-arrow" aria-hidden="true">→</span></a>
+    </div>
+  </header>
+
+  <main class="form-shell" id="formulario">
+    <form class="form-card" id="mentor-registration" novalidate>
+      <div data-form-body>
+        <div class="form-progress" data-progress aria-hidden="true"></div>
+        <p class="form-step-label" data-step-label>Paso 1 de 4</p>
+        <h1>Registro de mentores</h1>
+        <p class="form-lead">
+          Completa esta solicitud para expresar tu interés en mentorear. Enviar el formulario no implica aprobación automática.
+        </p>
+
+        <section class="form-step" data-step="1">
+          <h2 class="sr-only">Datos de contacto</h2>
+          <div class="field-grid two">
+            <div class="field" style="grid-column: 1 / -1">
+              <label for="m-nombre">Nombre completo</label>
+              <input id="m-nombre" name="nombre" type="text" autocomplete="name" inputmode="text" maxlength="80" data-sanitize="name" placeholder="Ej. Carlos Méndez" required />
+              <span class="field-error"></span>
+            </div>
+            <div class="field">
+              <label for="m-email">Correo electrónico</label>
+              <input id="m-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="120" data-sanitize="email" placeholder="nombre@correo.com" required />
+              <span class="field-error"></span>
+            </div>
+            <div class="field">
+              <label for="m-telefono">Teléfono</label>
+              <input id="m-telefono" name="telefono" type="tel" autocomplete="tel" inputmode="tel" maxlength="15" data-sanitize="phone" placeholder="Ej. 8095551234" required />
+              <span class="field-error"></span>
+            </div>
+            <div class="field">
+              <label for="m-pais">País</label>
+              <input id="m-pais" name="pais" type="text" inputmode="text" maxlength="60" data-sanitize="text" value="República Dominicana" required />
+              <span class="field-error"></span>
+            </div>
+            <div class="field">
+              <label for="m-ciudad">Ciudad</label>
+              <input id="m-ciudad" name="ciudad" type="text" inputmode="text" maxlength="60" data-sanitize="text" placeholder="Ej. Santiago" required />
+              <span class="field-error"></span>
+            </div>
+          </div>
+          <div class="form-nav">
+            <a class="btn btn-ghost" href="index.html">Volver al inicio</a>
+            <button class="btn btn-primary" type="button" data-next>Continuar</button>
+          </div>
+        </section>
+
+        <section class="form-step" data-step="2" hidden>
+          <h2 class="sr-only">Experiencia profesional</h2>
+          <fieldset>
+            <legend class="fieldset-legend">Áreas de expertise</legend>
+            <div class="chip-grid" style="margin-top: 0.85rem">
+              <label class="chip-choice"><input type="checkbox" name="expertise" value="finanzas-personales" /> Finanzas personales</label>
+              <label class="chip-choice"><input type="checkbox" name="expertise" value="mercado-de-valores" /> Mercado de valores</label>
+              <label class="chip-choice"><input type="checkbox" name="expertise" value="trading" /> Trading</label>
+              <label class="chip-choice"><input type="checkbox" name="expertise" value="bienes-raices" /> Bienes raíces</label>
+              <label class="chip-choice"><input type="checkbox" name="expertise" value="emprendimiento" /> Emprendimiento y negocios</label>
+              <label class="chip-choice"><input type="checkbox" name="expertise" value="criptoactivos" /> Criptoactivos</label>
+              <label class="chip-choice"><input type="checkbox" name="expertise" value="planificacion-para-el-retiro" /> Planificación para el retiro</label>
+            </div>
+            <p class="field-error" data-error-for="expertise"></p>
+          </fieldset>
+
+          <div class="field" style="margin-top: 1.5rem">
+            <label for="m-experiencia">Años de experiencia</label>
+            <input id="m-experiencia" name="aniosExperiencia" type="number" inputmode="numeric" min="0" max="60" step="1" data-sanitize="digits" placeholder="Ej. 5" required />
+            <span class="field-error"></span>
+          </div>
+
+          <div class="field" style="margin-top: 1.1rem">
+            <label for="m-background">Trayectoria profesional</label>
+            <textarea id="m-background" name="trayectoria" rows="5" placeholder="Resume tu experiencia relevante en educación financiera, inversión o negocios." required></textarea>
+            <span class="field-error"></span>
+          </div>
+
+          <div class="form-nav">
+            <button class="btn btn-ghost" type="button" data-back>Atrás</button>
+            <button class="btn btn-primary" type="button" data-next>Continuar</button>
+          </div>
+        </section>
+
+        <section class="form-step" data-step="3" hidden>
+          <h2 class="sr-only">Preferencias de mentoría</h2>
+          <fieldset>
+            <legend class="fieldset-legend">Modalidad preferida</legend>
+            <div class="choice-group">
+              <label class="choice"><input type="radio" name="m-modalidad" value="videollamada" /> Videollamada</label>
+              <label class="choice"><input type="radio" name="m-modalidad" value="chat" /> Chat</label>
+              <label class="choice"><input type="radio" name="m-modalidad" value="presencial" /> Presencial</label>
+              <label class="choice"><input type="radio" name="m-modalidad" value="hibrida" /> Híbrida</label>
+            </div>
+            <p class="field-error" data-error-for="m-modalidad"></p>
+          </fieldset>
+
+          <div class="field" style="margin-top: 1.5rem">
+            <label for="m-disponibilidad">Disponibilidad</label>
+            <input id="m-disponibilidad" name="disponibilidad" type="text" placeholder="Ej. martes y jueves por la noche" required />
+            <span class="field-error"></span>
+          </div>
+
+          <fieldset style="margin-top: 1.5rem">
+            <legend class="fieldset-legend">Idiomas</legend>
+            <div class="chip-grid" style="margin-top: 0.85rem">
+              <label class="chip-choice"><input type="checkbox" name="m-idiomas" value="es" /> Español</label>
+              <label class="chip-choice"><input type="checkbox" name="m-idiomas" value="en" /> Inglés</label>
+              <label class="chip-choice"><input type="checkbox" name="m-idiomas" value="fr" /> Francés</label>
+            </div>
+            <p class="field-error" data-error-for="m-idiomas"></p>
+          </fieldset>
+
+          <div class="field" style="margin-top: 1.5rem">
+            <label for="m-bio">Biografía profesional breve</label>
+            <textarea id="m-bio" name="biografia" rows="5" maxlength="600" placeholder="Cuéntanos quién eres y cómo acompañas a otras personas en su aprendizaje financiero." required></textarea>
+            <span class="field-error"></span>
+          </div>
+
+          <div class="form-nav">
+            <button class="btn btn-ghost" type="button" data-back>Atrás</button>
+            <button class="btn btn-primary" type="button" data-next>Revisar</button>
+          </div>
+        </section>
+
+        <section class="form-step" data-step="4" hidden>
+          <h2 class="sr-only">Confirmación</h2>
+          <div class="summary-box" data-summary></div>
+
+          <div class="consent-list">
+            <label class="consent-item">
+              <input type="checkbox" id="m-contacto" name="aceptoContacto" required />
+              <span>Acepto ser contactado sobre esta solicitud de mentoría.</span>
+            </label>
+            <p class="field-error" data-error-for="m-contacto"></p>
+
+            <label class="consent-item">
+              <input type="checkbox" id="m-terminos" name="aceptoTerminos" />
+              <span>He leído los <a href="#terminos">términos</a> y la <a href="#privacidad">política de privacidad</a> (borradores).</span>
+            </label>
+          </div>
+
+          <p class="preview-note" style="margin-top: 1.25rem">
+            Completar este formulario no significa que hayas sido aprobado como mentor.
+          </p>
+
+          <div class="form-nav">
+            <button class="btn btn-ghost" type="button" data-back>Atrás</button>
+            <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+          </div>
+        </section>
+      </div>
+
+      <div class="success-state" data-success hidden>
+        <div class="success-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <h2>Solicitud recibida (demostración)</h2>
+        <p class="lead" style="margin-inline: auto">
+          Gracias por tu interés en mentorear. Este prototipo no transmite datos a un servidor externo. Un equipo revisaría tu solicitud en una versión productiva.
+        </p>
+        <span class="demo-banner">Modo demostración · sin aprobación automática</span>
+        <div style="margin-top: 2rem; display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap">
+          <a class="btn btn-primary" href="index.html">Volver al inicio</a>
+          <a class="btn btn-ghost" href="registro-usuario.html">Registro de usuarios</a>
+        </div>
+      </div>
+    </form>
+  </main>
+
+  <dialog class="legal-dialog" id="dialog-privacidad" aria-labelledby="privacidad-title">
+    <div class="legal-dialog-inner">
+      <h2 id="privacidad-title">Política de privacidad</h2>
+      <p><strong>Borrador · pendiente de revisión legal.</strong></p>
+      <button type="button" class="btn btn-primary" data-close-dialog>Cerrar</button>
+    </div>
+  </dialog>
+  <dialog class="legal-dialog" id="dialog-terminos" aria-labelledby="terminos-title">
+    <div class="legal-dialog-inner">
+      <h2 id="terminos-title">Términos y condiciones</h2>
+      <p><strong>Borrador · pendiente de revisión legal.</strong></p>
+      <button type="button" class="btn btn-primary" data-close-dialog>Cerrar</button>
+    </div>
+  </dialog>
+
+  <script src="config.js"></script>
+  <script src="forms.js"></script>
+</body>
+</html>
