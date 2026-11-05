@@ -424,6 +424,8 @@ textarea:focus-visible,
   display: block;
   object-fit: contain;
   object-position: left center;
+  background: transparent;
+  filter: drop-shadow(0 1px 0 rgba(26, 46, 36, 0.12)) drop-shadow(0 6px 10px rgba(26, 46, 36, 0.14));
 }
 
 .brand-logo--lg {
@@ -743,11 +745,13 @@ textarea:focus-visible,
 .hero-inline-sprout {
   display: inline-block;
   vertical-align: middle;
-  height: clamp(1.55rem, 3.4vw, 2.35rem);
+  height: clamp(1.7rem, 3.8vw, 2.55rem);
   width: auto;
-  margin: 0 0.15em;
-  transform: translateY(-0.08em);
+  margin: 0 0.12em;
+  transform: translateY(-0.06em);
   object-fit: contain;
+  background: transparent;
+  filter: drop-shadow(0 2px 4px rgba(26, 46, 36, 0.18));
 }
 
 .hero-lead {
@@ -1279,6 +1283,8 @@ textarea:focus-visible,
 
 .rail-card {
   --swing: 0deg;
+  --rail-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --rail-dur: 0.78s;
   position: relative;
   flex: 0 0 auto;
   width: min(148px, 38vw);
@@ -1288,11 +1294,14 @@ textarea:focus-visible,
   cursor: pointer;
   scroll-snap-align: center;
   transform-origin: 50% 0;
-  transform: rotate(var(--swing));
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: rotate(var(--swing)) translateY(0) scale(1);
+  transition:
+    transform var(--rail-dur) var(--rail-ease),
+    z-index 0s linear 0.2s;
   animation: rail-sway 4.8s ease-in-out infinite;
   animation-delay: calc(var(--i) * 0.18s);
   outline: none;
+  will-change: transform;
 }
 
 .rail-card:nth-child(even) {
@@ -1305,10 +1314,22 @@ textarea:focus-visible,
   outline-offset: 4px;
 }
 
-.rail-card.is-active {
+.rail-card.is-active,
+.rail-card:hover {
   animation: none;
-  transform: rotate(0deg) translateY(-10px) scale(1.05);
   z-index: 3;
+  transition:
+    transform var(--rail-dur) var(--rail-ease),
+    z-index 0s;
+}
+
+.rail-card:hover:not(.is-active) {
+  transform: rotate(0deg) translateY(-7px) scale(1.03);
+  z-index: 2;
+}
+
+.rail-card.is-active {
+  transform: rotate(0deg) translateY(-12px) scale(1.06);
 }
 
 .rail-hook {
@@ -1321,9 +1342,14 @@ textarea:focus-visible,
   border-radius: 12px 12px 0 0;
   background: transparent;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: border-color var(--rail-dur) var(--rail-ease);
 }
 
 .rail-card-face {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1332,31 +1358,52 @@ textarea:focus-visible,
   padding: 1.15rem 1rem 1.1rem;
   border-radius: 18px;
   border: 1px solid rgba(26, 46, 36, 0.08);
-  background:
-    linear-gradient(165deg, rgba(255, 255, 255, 0.98), rgba(243, 248, 241, 0.92));
+  background: #f7f8f2;
+  color: var(--forest);
   box-shadow:
     0 10px 28px rgba(26, 46, 36, 0.08),
     0 2px 6px rgba(26, 46, 36, 0.04);
   text-align: left;
   transition:
-    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.35s ease,
-    background 0.35s ease;
+    box-shadow var(--rail-dur) var(--rail-ease),
+    border-color var(--rail-dur) var(--rail-ease),
+    color var(--rail-dur) var(--rail-ease);
 }
 
-.rail-card:hover .rail-card-face,
-.rail-card.is-active .rail-card-face {
+.rail-card-face::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background:
+    linear-gradient(
+      165deg,
+      var(--forest) 0%,
+      color-mix(in srgb, var(--forest) 82%, #0d1f16) 100%
+    );
+  opacity: 0;
+  transition: opacity var(--rail-dur) var(--rail-ease);
+  pointer-events: none;
+}
+
+.rail-card:hover:not(.is-active) .rail-card-face {
   border-color: rgba(95, 122, 85, 0.28);
   box-shadow:
-    0 16px 36px rgba(26, 46, 36, 0.12),
-    0 4px 10px rgba(26, 46, 36, 0.06);
+    0 16px 34px rgba(26, 46, 36, 0.11),
+    0 4px 10px rgba(26, 46, 36, 0.05);
 }
 
 .rail-card.is-active .rail-card-face {
-  background:
-    linear-gradient(165deg, var(--forest), color-mix(in srgb, var(--forest) 82%, #0d1f16));
   color: var(--white);
   border-color: transparent;
+  box-shadow:
+    0 18px 40px rgba(26, 46, 36, 0.18),
+    0 6px 14px rgba(26, 46, 36, 0.1);
+}
+
+.rail-card.is-active .rail-card-face::before {
+  opacity: 1;
 }
 
 .rail-card-icon {
@@ -1368,11 +1415,16 @@ textarea:focus-visible,
   border-radius: 14px;
   background: var(--sage);
   color: var(--forest);
+  transition:
+    background-color var(--rail-dur) var(--rail-ease),
+    color var(--rail-dur) var(--rail-ease),
+    transform var(--rail-dur) var(--rail-ease);
 }
 
 .rail-card.is-active .rail-card-icon {
   background: rgba(255, 255, 255, 0.12);
   color: var(--lime);
+  transform: scale(1.04);
 }
 
 .rail-card-face strong {
@@ -1380,6 +1432,7 @@ textarea:focus-visible,
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.2;
+  transition: color var(--rail-dur) var(--rail-ease);
 }
 
 .rail-tag {
@@ -1393,6 +1446,9 @@ textarea:focus-visible,
   text-transform: uppercase;
   color: var(--forest);
   background: rgba(95, 122, 85, 0.12);
+  transition:
+    background-color var(--rail-dur) var(--rail-ease),
+    color var(--rail-dur) var(--rail-ease);
 }
 
 .rail-card.is-active .rail-tag {
@@ -1407,39 +1463,6 @@ textarea:focus-visible,
   color: var(--text-secondary);
 }
 
-.rail-detail {
-  margin: 1.75rem auto 0;
-  max-width: 36rem;
-  text-align: center;
-  padding: 1.5rem 1.35rem 1.6rem;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(243, 248, 241, 0.75));
-  box-shadow: var(--shadow-soft);
-}
-
-.rail-detail .ui-label {
-  margin: 0 0 0.55rem;
-}
-
-.rail-detail h3 {
-  margin: 0 0 0.55rem;
-  font-size: clamp(1.35rem, 2.5vw, 1.7rem);
-  letter-spacing: -0.03em;
-}
-
-.rail-detail p {
-  margin: 0 auto 1.15rem;
-  max-width: 42ch;
-  color: var(--text-secondary);
-  line-height: 1.65;
-}
-
-.rail-detail .btn {
-  margin-inline: auto;
-}
-
 @keyframes rail-sway {
   0%, 100% { transform: rotate(-1.6deg); }
   50% { transform: rotate(1.8deg); }
@@ -1447,6 +1470,7 @@ textarea:focus-visible,
 
 @media (prefers-reduced-motion: reduce) {
   .rail-card {
+    --rail-dur: 0.01ms;
     animation: none;
   }
 }

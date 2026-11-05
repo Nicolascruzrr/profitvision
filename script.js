@@ -99,67 +99,47 @@
   if (rail) {
     const track = rail.querySelector("[data-rail-track]");
     const cards = [...rail.querySelectorAll("[data-rail-card]")];
-    const detail = document.querySelector("[data-rail-detail]");
-    const titleEl = detail?.querySelector("[data-rail-title]");
-    const copyEl = detail?.querySelector("[data-rail-copy]");
-    const kickerEl = detail?.querySelector("[data-rail-kicker]");
+    let activeCard = cards.find((c) => c.classList.contains("is-active")) || cards[0] || null;
 
-    const topics = {
-      presupuesto: {
-        kicker: "Hábitos · 01",
-        title: "Organiza tu presupuesto",
-        copy: "Aprende a entender tus ingresos, controlar tus gastos y crear mejores hábitos financieros día a día.",
-      },
-      ahorro: {
-        kicker: "Constancia · 02",
-        title: "Construye el hábito de ahorrar",
-        copy: "Empieza con montos realistas y convierte el ahorro en un hábito sostenible, no en un sacrificio puntual.",
-      },
-      emergencia: {
-        kicker: "Respaldo · 03",
-        title: "Crea tu fondo de emergencia",
-        copy: "Prepara un colchón para imprevistos y reduce la ansiedad financiera cuando algo no sale como esperabas.",
-      },
-      deudas: {
-        kicker: "Orden · 04",
-        title: "Ordena tus deudas con método",
-        copy: "Prioriza, negocia y paga con un plan claro. Entiende costos y plazos antes de asumir nuevas obligaciones.",
-      },
-      invertir: {
-        kicker: "Crecimiento · 05",
-        title: "Invertir con bases",
-        copy: "Conoce los fundamentos, las oportunidades y los riesgos antes de tomar decisiones. La mentoría te acompaña a tu ritmo.",
-      },
-      metas: {
-        kicker: "Claridad · 06",
-        title: "Define metas concretas",
-        copy: "Convierte tus objetivos en pasos medibles: desde un fondo de emergencia hasta planificar tu futuro.",
-      },
-      mentoria: {
-        kicker: "Guía · 07",
-        title: "Aprende con acompañamiento",
-        copy: "Una mentoría te ayuda a ordenar dudas, sostener el ritmo y aplicar lo aprendido a tu situación real.",
-      },
-    };
-
-    const setActive = (card) => {
-      const topic = card.getAttribute("data-topic");
-      const data = topics[topic];
-      if (!data) return;
+    const setActive = (card, { scroll = false } = {}) => {
+      if (!card || card === activeCard) {
+        if (card && scroll) {
+          card.scrollIntoView({
+            behavior: reduceMotion ? "auto" : "smooth",
+            inline: "center",
+            block: "nearest",
+          });
+        }
+        return;
+      }
+      activeCard = card;
       cards.forEach((c) => {
         const on = c === card;
         c.classList.toggle("is-active", on);
         c.setAttribute("aria-pressed", String(on));
       });
-      if (kickerEl) kickerEl.textContent = data.kicker;
-      if (titleEl) titleEl.textContent = data.title;
-      if (copyEl) copyEl.textContent = data.copy;
-      card.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", inline: "center", block: "nearest" });
+      if (scroll) {
+        card.scrollIntoView({
+          behavior: reduceMotion ? "auto" : "smooth",
+          inline: "center",
+          block: "nearest",
+        });
+      }
+    };
+
+    const cardFromPoint = (clientX, clientY) => {
+      const el = document.elementFromPoint(clientX, clientY);
+      return el?.closest?.("[data-rail-card]") || null;
     };
 
     cards.forEach((card) => {
       card.setAttribute("aria-pressed", String(card.classList.contains("is-active")));
-      card.addEventListener("click", () => setActive(card));
+      card.addEventListener("pointerenter", (e) => {
+        if (e.pointerType !== "mouse") return;
+        setActive(card);
+      });
+      card.addEventListener("focus", () => setActive(card));
+      card.addEventListener("click", () => setActive(card, { scroll: true }));
     });
 
     if (track) {
@@ -174,7 +154,9 @@
         dragging = false;
         track.classList.remove("is-dragging");
         if (pointerId !== null && track.hasPointerCapture?.(pointerId)) {
-          try { track.releasePointerCapture(pointerId); } catch (_) {}
+          try {
+            track.releasePointerCapture(pointerId);
+          } catch (_) {}
         }
         pointerId = null;
         if (moved && e?.type === "pointerup") {
@@ -196,10 +178,17 @@
       });
 
       track.addEventListener("pointermove", (e) => {
-        if (!dragging) return;
-        const dx = e.clientX - startX;
-        if (Math.abs(dx) > 4) moved = true;
-        track.scrollLeft = startScroll - dx;
+        if (dragging) {
+          const dx = e.clientX - startX;
+          if (Math.abs(dx) > 4) moved = true;
+          track.scrollLeft = startScroll - dx;
+          return;
+        }
+        /* Brush along the rail: hover/swipe highlights the card under the pointer */
+        if (e.pointerType === "mouse" || e.pointerType === "pen") {
+          const hit = cardFromPoint(e.clientX, e.clientY);
+          if (hit) setActive(hit);
+        }
       });
 
       track.addEventListener("pointerup", endDrag);
@@ -208,14 +197,17 @@
         if (dragging && e.pointerType === "mouse") endDrag(e);
       });
 
-      track.addEventListener("click", (e) => {
-        if (track.dataset.suppressClick) {
-          e.preventDefault();
-          e.stopPropagation();
-        }
-      }, true);
+      track.addEventListener(
+        "click",
+        (e) => {
+          if (track.dataset.suppressClick) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        },
+        true
+      );
 
-      /* gentle entrance sway impulse */
       if (!reduceMotion) {
         cards.forEach((card, i) => {
           card.style.setProperty("--swing", `${(i % 2 ? 1 : -1) * 2.2}deg`);
