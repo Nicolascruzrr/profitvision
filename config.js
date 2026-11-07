@@ -4,9 +4,10 @@
  */
 window.PROFIT_VISION = {
   brand: "Profit Vision",
-  userRegistrationUrl: "registro-usuario.html",
+  userRegistrationUrl:
+    "https://docs.google.com/forms/d/e/1FAIpQLSf2mDGD-x_x-rUlwFLxHR5821kTaFTbmP_8YhHlcYnOsv6cgA/viewform",
   mentorRegistrationUrl: "registro-mentor.html",
-  /** Endpoint futuro. Vacío = modo demostración local (sin envío externo). */
+  /** Endpoint futuro. Vacío = se usa el Google Form de usuarios. */
   formEndpoint: "",
   restrictedCategoriesUnder18: ["trading", "criptoactivos"],
   investmentRelatedCategories: [
